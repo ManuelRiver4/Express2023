@@ -11,8 +11,8 @@ app.get('/saludo', function(req, res){
     
     });
 
-app.listen(3000, function(){
-console.log('Adios desde una API')
-
-});
+ app.get('/despedida', function(req, res){
+ res.send('Adios desde una API');
+        
+        });
 
