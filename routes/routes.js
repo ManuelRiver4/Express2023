@@ -1,4 +1,5 @@
 // Cargue la conexion del grupo MySQL
+const { response } = require("express");
 const pool = require("../data/config");
 
 //Ruta de la app
@@ -39,8 +40,14 @@ app.post('/users', (request, response) => {
   });
 });
 
+// Actualizar un usuario existente
+app.put('/users/:id', (request, response) => {
+  const id = request.params.id;
 
-
+  post.query('UPDATE users SET ? WHERE id = ?', (request.body, id), (error,result) => {
+  response.send('User update successfully');
+});
+});
 
 
 };
