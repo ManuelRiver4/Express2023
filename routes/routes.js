@@ -1,5 +1,5 @@
 // Cargue la conexion del grupo MySQL
-const { response } = require("express");
+const { response, request } = require("express");
 const pool = require("../data/config");
 
 //Ruta de la app
@@ -47,6 +47,18 @@ app.put('/users/:id', (request, response) => {
   post.query('UPDATE users SET ? WHERE id = ?', (request.body, id), (error,result) => {
   response.send('User update successfully');
 });
+});
+
+
+//Eliminar un usuario 
+app.delete('/users/:id', (request, response) => {
+  const id = request.params.Id;
+
+  pool.query('DELETE FROM users WHERE id = ?', Id, (error, result) => {
+    if (error) throw error;
+    response.send('User deleted.');
+
+  });
 });
 
 
